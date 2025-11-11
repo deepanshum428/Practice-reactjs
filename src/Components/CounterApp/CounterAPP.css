@@ -1,0 +1,96 @@
+
+.main-container {
+    margin: 100px auto;
+    padding: 20px;
+    background-color: antiquewhite;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.container {
+    background-color: bisque;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; 
+  border-radius: 8px;
+}
+
+p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.button {
+    padding: 10px 20px;
+    outline: 1px solid slategrey ;
+    border:none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.03 ease;
+    font-size: 1rem;
+}
+.button:active {
+    transform: scale(0.95);
+}
+
+.start-button {
+    background-color: rgb(133, 222, 133);
+}
+
+.start-button:hover {
+    background-color: rgba(133, 222, 133, 0.468);
+    transform: scale(1.05);
+}
+
+.pause-button {
+    background-color: rgb(239, 198, 122);
+}
+
+.pause-button:hover {
+    transform: scale(1.05);
+    background-color: rgba(239, 198, 122, 0.584);
+
+}
+
+.stop-button {
+    background-color: rgb(228, 82, 82);
+}
+
+.stop-button:hover {
+    background-color: rgba(228, 82, 82, 0.537);
+    transform: scale(1.05);
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:600px) {
+    .main-container{
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .button {
+        width: 80%;
+        font-size: 0.95;
+    }
+
+    p {
+        font-size: 1rem
+    }
+}
