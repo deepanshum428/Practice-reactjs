@@ -1,6 +1,9 @@
 .App {
   background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -44,4 +47,17 @@ h1 {
 
 .adder span:hover {
   transform: rotate(180deg);
+}
+
+.clearAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  border-radius: 2px;
+  background-color: darkcyan;
+  width: 100%;
+  max-width: fit-content;
+  padding: 2px 8px;
+  cursor: pointer;
 }

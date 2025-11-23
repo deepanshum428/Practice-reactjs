@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import List from "./components/List/List";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
 import "./App.css";
 
 function App() {
@@ -60,6 +61,11 @@ function App() {
         />
         <span onClick={() => handleAddItem()}>+</span>
       </div>
+      <div className="clearAll" onClick={() => setTodolist([])}>
+        <span>Clear All</span>
+        <ClearAllIcon />
+      </div>
+
       {todolist.length > 0 && (
         <List
           todolist={todolist}
