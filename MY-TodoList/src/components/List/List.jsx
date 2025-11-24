@@ -8,7 +8,7 @@ export const List = ({ todolist, handleToggle, handleDelete }) => {
     <ul className="list">
       {todolist.map((listItem) => {
         return (
-          <li key={listItem.id} className={listItem.done && "done"}>
+          <li key={listItem.id} className={listItem.done ? "done" : ""}>
             <span>{listItem.item}</span>
             <span className="actions">
               {listItem.done ? (

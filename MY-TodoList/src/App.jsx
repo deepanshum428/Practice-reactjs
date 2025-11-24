@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import List from "./components/List/List";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
@@ -7,6 +7,15 @@ import "./App.css";
 function App() {
   const [text, setText] = useState("");
   const [todolist, setTodolist] = useState([]);
+
+  useEffect(() => {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    setTodolist(tasks);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(todolist));
+  }, [todolist]);
 
   const handleAddItem = () => {
     if (!text.trim()) return;
@@ -25,15 +34,19 @@ function App() {
       item: text,
       done: false,
     };
-    setTodolist([...todolist, newItem]);
+    const updatedList = [...todolist, newItem];
+    setTodolist(updatedList);
+    // localStorage.setItem("tasks", JSON.stringify(updatedList));
     setText("");
   };
 
-  console.log("TodoList", todolist);
+  // console.log("TodoList", todolist);
 
   const handleToggle = (itemId) => {
     const newTodolist = todolist.map((listItem) => {
       if (listItem.id === itemId) {
+        console.log(listItem);
+
         return { ...listItem, done: !listItem.done };
       }
       return listItem;
@@ -44,6 +57,11 @@ function App() {
   const handleDelete = (itemId) => {
     const newTodolist = todolist.filter((listitem) => listitem.id !== itemId);
     setTodolist(newTodolist);
+  };
+
+  const handleClearAll = () => {
+    setTodolist([]);
+    localStorage.removeItem("tasks");
   };
 
   console.log(todolist);
@@ -59,11 +77,19 @@ function App() {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <span onClick={() => handleAddItem()}>+</span>
+        <button className="task-btn" onClick={() => handleAddItem()}>
+          Add Items
+        </button>
+        {/* <span onClick={() => handleAddItem()}>+</span> */}
       </div>
-      <div className="clearAll" onClick={() => setTodolist([])}>
-        <span>Clear All</span>
+      <div
+        className="clearAll"
+        onClick={() => {
+          handleClearAll();
+        }}
+      >
         <ClearAllIcon />
+        <span>Clear All</span>
       </div>
 
       {todolist.length > 0 && (
