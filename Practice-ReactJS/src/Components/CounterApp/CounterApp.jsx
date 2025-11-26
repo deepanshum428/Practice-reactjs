@@ -45,7 +45,7 @@ const CounterApp = (props) => {
           {isPause ? "Resume" : "Pause"}
         </button>
         <button className="button stop-button" onClick={handleStop}>
-          Stop
+          Reset
         </button>
       </div>
     </div>
