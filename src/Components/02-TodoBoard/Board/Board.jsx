@@ -15,6 +15,7 @@ const Board = ({ taskList, setTaskList }) => {
     >
       <ul>
         <li>
+          <p>{index + 1}</p>
           <p>{task}</p>
           <button
             type="submit"
